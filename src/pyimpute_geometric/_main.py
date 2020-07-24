@@ -108,9 +108,9 @@ def load_targets(explanatory_rasters):
 
             # Save or check the geotransform
             if not aff:
-                aff = src.affine
+                aff = src.transform
             else:
-                assert aff == src.affine
+                assert aff == src.transform
 
             # Save or check the shape
             if not shape:
