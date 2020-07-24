@@ -10,7 +10,9 @@ env:
 addons:
   apt:
     packages:
-    - libgdal1h
+    - gcc
+    - g++
+    - libudunits2-dev
     - gdal-bin
     - libgdal-dev
     - libatlas-dev
