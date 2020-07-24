@@ -1,13 +1,13 @@
 from __future__ import print_function
 import sys
 import os
-from pyimpute import load_training_vector, evaluate_clf
+from pyimpute_geometric import load_training_vector, evaluate_clf
 from sklearn.ensemble import ExtraTreesClassifier
 import json
 import numpy as np
 
 import logging
-logger = logging.getLogger('pyimpute')
+logger = logging.getLogger('pyimpute_geometric')
 logger.setLevel(logging.DEBUG)
 sh = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(sh)

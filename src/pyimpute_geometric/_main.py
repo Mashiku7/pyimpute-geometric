@@ -5,8 +5,8 @@ import os
 import math
 import logging
 from sklearn import metrics
-from sklearn import cross_validation
-logger = logging.getLogger('pyimpute')
+from sklearn.model_selection import cross_val_score, KFold, train_test_split
+logger = logging.getLogger('pyimpute_geometric')
 
 
 def load_training_vector(response_shapes, explanatory_rasters, response_field, metric='mean'):
@@ -32,7 +32,7 @@ def load_training_vector(response_shapes, explanatory_rasters, response_field, m
     for i, raster in enumerate(explanatory_rasters):
         logger.debug("Rasters stats on %s" % raster)
 
-        stats = zonal_stats(response_shapes, raster, stats=metric, prefix="pyimpute_", geojson_out=True)
+        stats = zonal_stats(response_shapes, raster, stats=metric, prefix="pyimpute_geometric_", geojson_out=True)
 
         zones = [x['properties'][response_field] for x in stats]
         if all_zones:
@@ -40,7 +40,7 @@ def load_training_vector(response_shapes, explanatory_rasters, response_field, m
         else:
             all_zones = zones
 
-        means = [x['properties']['pyimpute_' + metric] for x in stats]
+        means = [x['properties']['pyimpute_geometric_' + metric] for x in stats]
         all_means.append(means)
 
     train_y = np.array(all_zones)
@@ -298,7 +298,7 @@ def evaluate_clf(clf, X, y, k=None, test_size=0.5, scoring="f1_weighted", featur
     Evalate the classifier on the FULL training dataset
     This takes care of fitting on train/test splits
     """
-    X_train, X_test, y_train, y_true = cross_validation.train_test_split(
+    X_train, X_test, y_train, y_true = train_test_split(
         X, y, test_size=test_size)
 
     clf.fit(X_train, y_train)
@@ -324,7 +324,7 @@ def evaluate_clf(clf, X, y, k=None, test_size=0.5, scoring="f1_weighted", featur
 
     if k:
         print("Cross validation")
-        kf = cross_validation.KFold(len(y), n_folds=k)
-        scores = cross_validation.cross_val_score(clf, X, y, cv=kf, scoring=scoring)
+        kf = KFold(len(y), n_folds=k)
+        scores = cross_val_score(clf, X, y, cv=kf, scoring=scoring)
         print(scores)
         print("%d-fold Cross Validation Accuracy: %0.2f (+/- %0.2f)" % (k, scores.mean() * 100, scores.std() * 200))

@@ -21,16 +21,16 @@ class PyTest(TestCommand):
 
 
 setup(
-    name="pyimpute",
-    version="0.1.2",
-    author="Matthew Perry",
-    author_email="perrygeo@gmail.com",
-    description=("Utilities for applying scikit-learn to spatial datasets"),
+    name="pyimpute_geometric",
+    version="0.0.1",
+    author="M. Mashiku",
+    author_email="melchy.mashiku@gmail.com",
+    description=("Utilities for applying scikit-learn to spatial datasets based on Matthew Perry's Pyimpute"),
     license="BSD",
     keywords="gis geospatial geographic raster vector zonal statistics machinelearning",
-    url="https://github.com/perrygeo/pyimpute",
+    url="https://github.com/mashiku7/pyimpute_geometric",
     package_dir={'': 'src'},
-    packages=['pyimpute'],
+    packages=['pyimpute_geometric'],
     long_description=read('README.md'),
     install_requires=[
         'scikit-learn',

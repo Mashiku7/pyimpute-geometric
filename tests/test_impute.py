@@ -6,11 +6,11 @@ explanatory_rasters = [os.path.join(DATA, x) for x in
                        "dtmean8_12.img gt_dem.img int_cnl_euc.img pmean_all.img "
                        "p_n.img tmax8.img tmean_all.img".split()]
 response_raster = os.path.join(DATA, 'responses.tif')
-TMPOUT = "/tmp/pyimpute_test"
+TMPOUT = "/tmp/pyimpute_geometric_test"
 
 
 def test_impute():
-    from pyimpute import load_training_rasters, load_targets, impute
+    from src.pyimpute_geometric import load_training_rasters, load_targets, impute
 
     # Load training data
     train_xs, train_y = load_training_rasters(response_raster, explanatory_rasters)
@@ -33,14 +33,14 @@ def test_impute():
 
 
 def test_load_training_rasters():
-    from pyimpute import load_training_rasters
+    from src.pyimpute_geometric import load_training_rasters
     train_xs, train_y = load_training_rasters(response_raster, explanatory_rasters)
     assert train_xs.shape == (38304, 7)
     assert len(explanatory_rasters) == train_xs.shape[1]
     assert train_y.shape == (38304,)
 
 def test_load_training_vector():
-    from pyimpute import load_training_vector
+    from src.pyimpute_geometric import load_training_vector
     response_shapes = os.path.join(DATA, "points.geojson")
 
     train_xs, train_y = load_training_vector(response_shapes,
@@ -52,14 +52,14 @@ def test_load_training_vector():
 
 
 def test_load_targets():
-    from pyimpute import load_targets
+    from src.pyimpute_geometric import load_targets
     target_xs, raster_info = load_targets(explanatory_rasters)
     assert sorted(raster_info.keys()) == ['affine', 'crs', 'shape']
     assert target_xs.shape == (38304, 7)
 
 
 def test_stratified_sample_raster():
-    from pyimpute import load_training_rasters, stratified_sample_raster
+    from src.pyimpute_geometric import load_training_rasters, stratified_sample_raster
 
     # Take a random stratified sample
     selected = stratified_sample_raster(response_raster,

@@ -1,14 +1,14 @@
 from __future__ import print_function
 import sys
 import os
-from pyimpute import load_training_rasters, load_targets, impute
-from pyimpute import stratified_sample_raster
+from pyimpute_geometric import load_training_rasters, load_targets, impute
+from pyimpute_geometric import stratified_sample_raster
 from sklearn.ensemble import ExtraTreesClassifier
-from sklearn import cross_validation
+from sklearn.model_selection import cross_val_score
 from collections import OrderedDict
 
 import logging
-logger = logging.getLogger('pyimpute')
+logger = logging.getLogger('pyimpute_geometric')
 logger.setLevel(logging.DEBUG)
 sh = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(sh)
@@ -39,7 +39,7 @@ def main():
 
     # Cross validate
     k = 5
-    scores = cross_validation.cross_val_score(clf, train_xs, train_y, cv=k)
+    scores = cross_val_score(clf, train_xs, train_y, cv=k)
     print("%d-fold Cross Validation Accuracy: %0.2f (+/- %0.2f)" % (k, scores.mean() * 100, scores.std() * 200))
 
     # ... Other model assessment

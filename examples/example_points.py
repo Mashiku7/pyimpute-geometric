@@ -1,14 +1,14 @@
 from __future__ import print_function
 import sys
 import os
-from pyimpute import load_training_vector, load_targets, impute
+from pyimpute_geometric import load_training_vector, load_targets, impute
 from sklearn.ensemble import ExtraTreesClassifier
-from sklearn import cross_validation
+from sklearn.model_selection import cross_val_score
 import json
 import numpy as np
 
 import logging
-logger = logging.getLogger('pyimpute')
+logger = logging.getLogger('pyimpute_geometric')
 logger.setLevel(logging.DEBUG)
 sh = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(sh)
@@ -45,7 +45,7 @@ def main():
 
     # Cross validate
     k = 5
-    scores = cross_validation.cross_val_score(clf, train_xs, train_y, cv=k)
+    scores = cross_val_score(clf, train_xs, train_y, cv=k)
     print("%d-fold Cross Validation Accuracy: %0.2f (+/- %0.2f)" % (k, scores.mean() * 100, scores.std() * 200))
 
     # Run the model on the current data; i.e. predict current conditions
