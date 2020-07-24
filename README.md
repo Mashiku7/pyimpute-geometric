@@ -94,6 +94,6 @@ See the `.travis.yml` file for a working example on Ubuntu systems.
 
 ### Other resources
 
-For an overview, watch this presentation at FOSS4G 2014: <a href="http://vimeo.com/106235287">Spatial-Temporal Prediction of Climate Change Impacts using pyimpute_geometric, scikit-learn and GDAL — Matthew Perry</a> 
+For an overview, watch this presentation at FOSS4G 2014: <a href="http://vimeo.com/106235287">Spatial-Temporal Prediction of Climate Change Impacts using pyimpute, scikit-learn and GDAL — Matthew Perry</a> 
 
 Also, check out [the examples](https://github.com/perrygeo/python-impute/blob/master/examples/) and [the wiki](https://github.com/mashiku7/pyimpute-geometric/wiki)
