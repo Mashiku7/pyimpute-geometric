@@ -1,8 +1,8 @@
-![travis](https://travis-ci.org/mashiku7/pyimpute-geometric.svg)
+![travis](https://travis-ci.org/mashiku7/pyimpute_geometric.svg)
 
 ## Python module for Space-time prediction using scikit-learn and rasterio
 
-`pyimpute-geometric` provides high-level python functions for bridging the gap between spatial data formats and machine learning software to facilitate supervised classification and regression on geospatial data. This allows you to create landscape-scale predictions based on sparse observations.
+`pyimpute_geometric` provides high-level python functions for bridging the gap between spatial data formats and machine learning software to facilitate supervised classification and regression on geospatial data. This allows you to create landscape-scale predictions based on sparse observations.
 
 The observations, known as the **training data**, consists of:
 
@@ -11,9 +11,9 @@ The observations, known as the **training data**, consists of:
 
 The **target data** consists of explanatory variables represented by raster datasets. There are no response variables available for the target data; the goal is to *predict* a raster surface of responses. The responses can either be discrete (classification) or continuous (regression).
 
-![example](https://raw.githubusercontent.com/mashiku7/pyimpute-geometric/master/example.png)
+![example](https://raw.githubusercontent.com/mashiku7/pyimpute_geometric/master/example.png)
 
-## pyimpute-geometric Functions
+## pyimpute_geometric Functions
 
 * `load_training_vector`: Load training data where responses are vector data (explanatory variables are always raster)
 * `load_training_raster`: Load training data where responses are raster data
@@ -22,7 +22,7 @@ The **target data** consists of explanatory variables represented by raster data
 * `load_targets`: Loads target raster data into data structures required by scikit-learn
 * `impute`: takes target data and your scikit-learn classifier and makes predictions, outputing GeoTiffs
     
-These functions don't really provide any ground-breaking new functionality, they merely saves lots of tedious data wrangling that would otherwise bog your analysis down in low-level details. In other words, `pyimpute-geometric` provides a high-level python workflow for spatial prediction, making it easier to:
+These functions don't really provide any ground-breaking new functionality, they merely saves lots of tedious data wrangling that would otherwise bog your analysis down in low-level details. In other words, `pyimpute_geometric` provides a high-level python workflow for spatial prediction, making it easier to:
 
 * explore new variables more easily
 * frequently update predictions with new information (e.g. new Landsat imagery as it becomes available)
@@ -31,7 +31,7 @@ These functions don't really provide any ground-breaking new functionality, they
 
 ### Basic example
 
-Here's what a `pyimpute-geometric` workflow might look like. In this example, we have two explanatory variables as rasters (temperature and precipitation) and a geojson with point observations of habitat suitability for a plant species. Our goal is to predict habitat suitability across the entire region based only on the explanatory variables.
+Here's what a `pyimpute_geometric` workflow might look like. In this example, we have two explanatory variables as rasters (temperature and precipitation) and a geojson with point observations of habitat suitability for a plant species. Our goal is to predict habitat suitability across the entire region based only on the explanatory variables.
 
 ```
 from pyimpute_geometric import load_training_vector, load_targets, impute, evaluate_clf
@@ -80,13 +80,13 @@ assert os.path.exists("/tmp/probability_1.tif")
 Assuming you have `libgdal` and the scipy system dependencies installed, you can install with pip 
 
 ```
-pip install pyimpute-geometric
+pip install pyimpute_geometric
 ```
 
 Alternatively, install from the source code
 ```
-git clone https://github.com/mashiku7/pyimpute-geometric.git
-cd pyimpute-geometric
+git clone https://github.com/mashiku7/pyimpute_geometric.git
+cd pyimpute_geometric
 pip install -e .
 ```
 
@@ -96,4 +96,4 @@ See the `.travis.yml` file for a working example on Ubuntu systems.
 
 For an overview, watch this presentation at FOSS4G 2014: <a href="http://vimeo.com/106235287">Spatial-Temporal Prediction of Climate Change Impacts using pyimpute, scikit-learn and GDAL — Matthew Perry</a> 
 
-Also, check out [the examples](https://github.com/perrygeo/python-impute/blob/master/examples/) and [the wiki](https://github.com/mashiku7/pyimpute-geometric/wiki)
+Also, check out [the examples](https://github.com/perrygeo/python-impute/blob/master/examples/) and [the wiki](https://github.com/mashiku7/pyimpute_geometric/wiki)

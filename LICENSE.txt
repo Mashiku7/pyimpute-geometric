@@ -1,4 +1,4 @@
-Copyright (c) 2013 Matthew Perry
+Copyright (c) 2013 Mel Mashiku
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,

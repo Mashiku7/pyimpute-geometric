@@ -22,7 +22,7 @@ class PyTest(TestCommand):
 
 setup(
     name="pyimpute_geometric",
-    version="0.0.2",
+    version="0.0.4",
     author="Mel Mashiku",
     author_email="melchy.mashiku@gmail.com",
     description=("Utilities for applying scikit-learn to spatial datasets based on Matthew Perry's Pyimpute"),
