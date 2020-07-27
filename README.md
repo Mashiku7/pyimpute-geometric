@@ -1,4 +1,4 @@
-![travis](https://travis-ci.org/mashiku7/pyimpute_geometric.svg)
+![travis](https://travis-ci.org/mashiku7/pyimpute-geometric.svg)
 
 ## Python module for Space-time prediction using scikit-learn and rasterio
 
