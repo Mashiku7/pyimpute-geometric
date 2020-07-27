@@ -1,3 +1,5 @@
+
+affine<3.0
 scikit-learn
 scipy
 rasterio

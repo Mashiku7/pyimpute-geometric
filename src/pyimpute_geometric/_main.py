@@ -1,6 +1,8 @@
 from __future__ import print_function
 import rasterio
-from rasterio import Affine
+# from rasterio import Affine
+from affine import Affine
+from rasterio.transform import guard_transform
 import numpy as np
 import os
 import math
@@ -109,9 +111,9 @@ def load_targets(explanatory_rasters):
 
             # Save or check the geotransform
             if not aff:
-                aff = Affine
+                aff = src.transform
             else:
-                assert aff == Affine
+                assert aff == src.transform
 
             # Save or check the shape
             if not shape:
@@ -170,12 +172,14 @@ def impute(target_xs, clf, raster_info, outdir="output", linechunk=1000, class_p
         'dtype': 'int16',
         'nodata': -32768,
         'tiled': False,
-        'transform': raster_info['affine'].to_gdal,
+        'transform': guard_transform(raster_info['affine']),
         'width': shape[1]}
 
+    response_path = os.path.join(outdir, "responses.tif")
+    response_ds = rasterio.open(response_path, 'w', **profile)
     try:
-        response_path = os.path.join(outdir, "responses.tif")
-        response_ds = rasterio.open(response_path, 'w', **profile)
+        # response_path = os.path.join(outdir, "responses.tif")
+        # response_ds = rasterio.open(response_path, 'w', **profile)
 
         profile['dtype'] = 'float32'
         if certainty:
