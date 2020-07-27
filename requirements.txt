@@ -3,4 +3,4 @@ affine<3.0
 scikit-learn
 scipy
 rasterio
-rasterstats>=0.9
+-e git://github.com/Mashiku7/python-rasterstats.git#egg=rasterstats 
