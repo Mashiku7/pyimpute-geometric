@@ -2,6 +2,9 @@
 out1/*
 out2/*
 *.prof
+*.empty
+*.pytest_cache
+.DS_Store
 examples/_*
 *.egg-info
 dist/*
