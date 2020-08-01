@@ -178,7 +178,11 @@ def impute(target_xs, clf, raster_info, outdir="output", linechunk=1000, class_p
         'count': 1,
         'crs': raster_info['crs'],
         'driver': u'GTiff',
+<<<<<<< HEAD
         'dtype':'float32',
+=======
+        'dtype': 'float64',
+>>>>>>> 1786d3d36e9d0f5f86a9327a430eb937afe30a04
         'nodata': -32768,
         'tiled': False,
         'transform': guard_transform(raster_info['affine']),
@@ -208,7 +212,7 @@ def impute(target_xs, clf, raster_info, outdir="output", linechunk=1000, class_p
         # Chunky logic
         if not linechunk:
             linechunk = shape[0]
-        chunks = int(math.ceil(shape[0] / float(linechunk)))
+        chunks = float(math.ceil(shape[0] / float(linechunk)))
 
         for chunk in range(chunks):
             logger.debug("Writing chunk %d of %d" % (chunk+1, chunks))
@@ -224,7 +228,11 @@ def impute(target_xs, clf, raster_info, outdir="output", linechunk=1000, class_p
 
             # Predict
             responses = clf.predict(line)
+<<<<<<< HEAD
             responses2D = responses.reshape((linechunk, shape[1])).astype('float32')
+=======
+            responses2D = responses.reshape((linechunk, shape[1])).astype('float64')
+>>>>>>> 1786d3d36e9d0f5f86a9327a430eb937afe30a04
             response_ds.write_band(1, responses2D, window=window)
 
             if certainty or class_prob:
@@ -267,7 +275,7 @@ def stratified_sample_raster(strata_data, target_sample_size=30, min_sample_prop
     # construct a dictionary of lists,
     # keys are stratum ids
     # values are list of indices
-    sample = dict([(int(s),[]) for s in np.unique(strata)])
+    sample = dict([(float(s),[]) for s in np.unique(strata)])
     satisfied = []
 
     # counts for proportion-based constraints
