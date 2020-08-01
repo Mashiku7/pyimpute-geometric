@@ -178,11 +178,7 @@ def impute(target_xs, clf, raster_info, outdir="output", linechunk=1000, class_p
         'count': 1,
         'crs': raster_info['crs'],
         'driver': u'GTiff',
-<<<<<<< HEAD
-        'dtype':'float32',
-=======
-        'dtype': 'float64',
->>>>>>> 1786d3d36e9d0f5f86a9327a430eb937afe30a04
+        'dtype': 'float32',
         'nodata': -32768,
         'tiled': False,
         'transform': guard_transform(raster_info['affine']),
@@ -228,11 +224,7 @@ def impute(target_xs, clf, raster_info, outdir="output", linechunk=1000, class_p
 
             # Predict
             responses = clf.predict(line)
-<<<<<<< HEAD
             responses2D = responses.reshape((linechunk, shape[1])).astype('float32')
-=======
-            responses2D = responses.reshape((linechunk, shape[1])).astype('float64')
->>>>>>> 1786d3d36e9d0f5f86a9327a430eb937afe30a04
             response_ds.write_band(1, responses2D, window=window)
 
             if certainty or class_prob:
