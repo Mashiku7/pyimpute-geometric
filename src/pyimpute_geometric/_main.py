@@ -116,7 +116,7 @@ def load_targets(explanatory_rasters):
                 try:
                     assert aff == src.transform
                 except AssertionError:
-                    print('Assertion Error')
+                    print('Assertion Error at src.transform')
 
             # Save or check the shape
             if not shape:
@@ -125,7 +125,7 @@ def load_targets(explanatory_rasters):
                 try:
                     assert shape == ar.shape
                 except AssertionError:
-                    print('Assertion Error')
+                    print('Assertion Error at ar.shape')
 
             # Save or check the geotransform
             if not crs:
@@ -134,7 +134,7 @@ def load_targets(explanatory_rasters):
                 try:
                     assert crs == src.crs
                 except AssertionError:
-                    print('Assertion Error')
+                    print('Assertion Error at src.crs')
 
         # Flatten in one dimension
         arf = ar.flatten()
