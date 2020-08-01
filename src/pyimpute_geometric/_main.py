@@ -208,7 +208,7 @@ def impute(target_xs, clf, raster_info, outdir="output", linechunk=1000, class_p
         # Chunky logic
         if not linechunk:
             linechunk = shape[0]
-        chunks = float(math.ceil(shape[0] / float(linechunk)))
+        chunks = int(math.ceil(shape[0] / float(linechunk)))
 
         for chunk in range(chunks):
             logger.debug("Writing chunk %d of %d" % (chunk+1, chunks))
