@@ -1,6 +1,6 @@
 ![travis](https://travis-ci.org/mashiku7/pyimpute_geometric.svg)
 
-## Python module for Space-time prediction using scikit-learn and rasterio
+## Python module for Spatio-temporal prediction using scikit-learn and rasterio
 
 `pyimpute_geometric` provides high-level python functions for bridging the gap between spatial data formats and machine learning software to facilitate supervised classification and regression on geospatial data. This allows you to create landscape-scale predictions based on sparse observations.
 
